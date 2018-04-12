@@ -16,6 +16,8 @@
  *  version: 1.0.0
  *  url:     http://impress.js.org
  *  source:  http://github.com/impress/impress.js/
+ *
+ *  This is a modified version for use with RoxaPrez ( + Markdown-it and mouse control support)
  */
 
 // You are one of those who like to know how things work inside?
