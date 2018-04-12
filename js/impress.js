@@ -1930,14 +1930,14 @@
     document.addEventListener( "impress:init", function( e ) {
         renderHelpDiv();
 
-        // At start, show the help for 7 seconds.
+        // At start, show the help for 5 seconds.
         var helpDiv = document.getElementById( "impress-help" );
         if ( helpDiv ) {
             helpDiv.style.display = "block";
             timeoutHandle = window.setTimeout( function() {
                 var helpDiv = document.getElementById( "impress-help" );
                 helpDiv.style.display = "none";
-            }, 7000 );
+            }, 5000 );
 
             // Regster callback to empty the help div on teardown
             var api = e.detail.api;
@@ -3391,9 +3391,8 @@
 
 
         // Add a line to the help popup
-        util.triggerEvent( document, "impress:help:add", { command: "Left &amp; Right",
-                                                           text: "Previous &amp; Next step",
-                                                           row: 1 } );
+        util.triggerEvent( document, "impress:help:add", { command: "Left, Right &amp Mouse Wheel", text: "Previous &amp; Next step", row: 1 } );
+        util.triggerEvent( document, "impress:help:add", { command: "Up, PageUp &amp Double Click", text: "Go Overview", row: 2 } );
 
     }, false );
 
