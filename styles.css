@@ -1,20 +1,20 @@
 /***** Fonts *****/
 /* @import url(http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Cutive+Mono); */
-@import url(fonts.css);
+@import url('roxaprezcore/css/fonts.css');
 
 @font-face {
     font-family: OpenDyslexic;
-    src: url('fonts/opendyslexic.otf') format('opentype');
+    src: url('roxaprezcore/fonts/opendyslexic.otf') format('opentype');
 }
 
 @font-face {
     font-family: Andika;
-    src: url('fonts/Andika-R.woff') format('woff');
+    src: url('roxaprezcore/fonts/Andika-R.woff') format('woff');
 }
 
 @font-face {
     font-family: Purisa;
-    src: url('fonts/Purisa.ttf') format('truetype');
+    src: url('roxaprezcore/fonts/Purisa.ttf') format('truetype');
 }
 
 /* -----------------------------------------------
@@ -70,7 +70,7 @@
     position: absolute;
     left: 45px; /* slide width is 900px, so this is like a 5% margin on both sides */
     width: 90%;
-    text-align: center;    
+    text-align: center;
 }
 .title h1 { top: 50px; }
 .title h2 { top: 400px; }
@@ -156,7 +156,7 @@ p {
     font-weight: normal;
     margin-bottom: 0.3em;
     margin-top: 0.3em;
-	margin: 0.7em; 
+	margin: 0.7em;
 }
 
 ul li {
@@ -242,7 +242,7 @@ a:hover, a:focus { text-shadow: -1px 1px 2px rgba(100,100,100,0.5); }
 blockquote {
     font-family: 'PT Serif';
     font-style: italic;
-    font-weight: 400;    
+    font-weight: 400;
 }
 
 em { text-shadow: 0 2px 2px rgba(0, 0, 0, .3); }
@@ -252,7 +252,7 @@ strong { text-shadow: -1px 1px 2px rgba(100,100,100,0.5); }
 q {
     font-family: 'PT Serif';
     font-style: italic;
-    font-weight: 400;    
+    font-weight: 400;
     text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
 }
 
