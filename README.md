@@ -8,7 +8,7 @@ An easy to use, fast and beautiful presentation system based on impress.js and M
 
 # How to use ?
 - [Download](https://github.com/ValeryBruniaux/RoxaPrez/archive/master.zip), clone or copy all the directory
-- Edit modele.html to feed presentation content
+- Edit modele.html to feed presentation content with easy Markdown syntax !
 - Edit styles.css to change presentation style
 - Change the image background.gif
 - Launch file in your Navigator !
