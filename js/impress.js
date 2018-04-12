@@ -3144,6 +3144,23 @@
 ( function( document ) {
     "use strict";
 
+
+    // ICI : throttles mouse wheel navigation
+    var lastMouseWheelStep = 0;
+    
+    // Throttling function calls, by Remy Sharp
+    // http://remysharp.com/2010/07/21/throttling-function-calls/
+    var throttle = function( fn, delay ) {
+        var timer = null;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout( timer );
+            timer = setTimeout( function() {
+                fn.apply( context, args );
+            }, delay );
+        };
+    };
+
     // Wait for impress.js to be initialized
     document.addEventListener( "impress:init", function( event ) {
 
@@ -3213,8 +3230,10 @@
                 } else {
                     switch ( event.keyCode ) {
                         case 33: // Pg up
-                        case 37: // Left
                         case 38: // Up
+                                 api.goto("overview")
+                                 break;
+                        case 37: // Left
                                  api.prev( event );
                                  break;
                         case 9:  // Tab
@@ -3297,6 +3316,79 @@
                 throw err;
             }
         }, false );
+
+        // ICI : delegated handler for double clicking
+        document.addEventListener( "dblclick", function ( event ) {
+            api.goto( "overview" );
+            event.preventDefault();
+        }, false);
+        
+        // ICI : delegated handler for mouseWheel
+        document.addEventListener( "mousewheel", function ( event ) {
+            var target = event.target;
+            if (typeof target.tagName !== "undefined") {
+                while ( ( !target.classList.contains( "no-mousewheel" ) ) &&
+                        ( target !== document.documentElement ) ) {
+                    target = target.parentNode;
+                }
+            }
+            if ( (typeof target.tagName === "undefined") || 
+                ( !target.classList.contains( "no-mousewheel" ) ) ) {
+                var delta = event.detail || -event.wheelDelta;
+                if ( Date.now() - lastMouseWheelStep > 600 )  {
+                    lastMouseWheelStep = Date.now();
+                    if ( delta < 0 )
+                        api.prev();
+                    else
+                        api.next();
+                    event.preventDefault();
+                }
+            }
+        }, false);
+
+        // ICI : delegated handler for mouseWheel (FireFox)
+        document.addEventListener("DOMMouseScroll", function ( event ) {
+           var target = event.target;
+            if (typeof target.tagName !== "undefined") {
+                while ( ( !target.classList.contains( "no-mousewheel" ) ) &&
+                        ( target !== document.documentElement ) ) {
+                    target = target.parentNode;
+                }
+            }
+            if ( (typeof target.tagName === "undefined") || 
+                ( !target.classList.contains( "no-mousewheel" ) ) ) {
+                var delta = event.detail || -event.wheelDelta;
+                if ( Date.now() - lastMouseWheelStep > 600 )  {
+                    lastMouseWheelStep = Date.now();
+                    if ( delta < 0 )
+                        api.prev();
+                    else
+                        api.next();
+                    event.preventDefault();
+                }
+            }
+        }, false);
+
+        // Touch handler to detect taps on the left and right side of the screen
+        // based on awesome work of @hakimel: https://github.com/hakimel/reveal.js
+        document.addEventListener( "touchstart", function( event ) {
+            if ( event.touches.length === 1 ) {
+                var x = event.touches[ 0 ].clientX,
+                    width = window.innerWidth * 0.3,
+                    result = null;
+
+                if ( x < width ) {
+                    result = api.prev();
+                } else if ( x > window.innerWidth - width ) {
+                    result = api.next();
+                }
+
+                if ( result ) {
+                    event.preventDefault();
+                }
+            }
+        }, false );
+
 
         // Add a line to the help popup
         util.triggerEvent( document, "impress:help:add", { command: "Left &amp; Right",
