@@ -3147,7 +3147,7 @@
 
     // ICI : throttles mouse wheel navigation
     var lastMouseWheelStep = 0;
-    
+
     // Throttling function calls, by Remy Sharp
     // http://remysharp.com/2010/07/21/throttling-function-calls/
     var throttle = function( fn, delay ) {
@@ -3231,7 +3231,7 @@
                     switch ( event.keyCode ) {
                         case 33: // Pg up
                         case 38: // Up
-                                 api.goto("overview")
+                                 api.goto("Overview")
                                  break;
                         case 37: // Left
                                  api.prev( event );
@@ -3319,10 +3319,10 @@
 
         // ICI : delegated handler for double clicking
         document.addEventListener( "dblclick", function ( event ) {
-            api.goto( "overview" );
+            api.goto( "Overview" );
             event.preventDefault();
         }, false);
-        
+
         // ICI : delegated handler for mouseWheel
         document.addEventListener( "mousewheel", function ( event ) {
             var target = event.target;
@@ -3332,7 +3332,7 @@
                     target = target.parentNode;
                 }
             }
-            if ( (typeof target.tagName === "undefined") || 
+            if ( (typeof target.tagName === "undefined") ||
                 ( !target.classList.contains( "no-mousewheel" ) ) ) {
                 var delta = event.detail || -event.wheelDelta;
                 if ( Date.now() - lastMouseWheelStep > 600 )  {
@@ -3355,7 +3355,7 @@
                     target = target.parentNode;
                 }
             }
-            if ( (typeof target.tagName === "undefined") || 
+            if ( (typeof target.tagName === "undefined") ||
                 ( !target.classList.contains( "no-mousewheel" ) ) ) {
                 var delta = event.detail || -event.wheelDelta;
                 if ( Date.now() - lastMouseWheelStep > 600 )  {
