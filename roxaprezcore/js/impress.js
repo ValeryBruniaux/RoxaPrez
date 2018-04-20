@@ -1545,7 +1545,7 @@
     var preInit = function() {
         if ( window.markdownit ) {
 
-            var md = window.markdownit("default", { html: true, breaks: true, linkify: true, typographer: true } ).use(markdownitSub).use(markdownitSup).use(markdownitTaskLists).use(markdownitEmoji).use(markdownitMark).use(markdownitIns).use(markdownitContainer, "warning");
+            var md = window.markdownit("default", { html: true, breaks: true, linkify: true, typographer: true } ).use(markdownitSub).use(markdownitSup).use(markdownitTaskLists,{enabled: true, label: false, labelAfter: false} ).use(markdownitEmoji).use(markdownitMark).use(markdownitIns).use(markdownitContainer, "warning");
 
             // Unlike the other extras, Markdown.js doesn't by default do anything in
             // particular. We do it ourselves here.
